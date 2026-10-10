@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manager Library · Sitio público</title>
+  <meta name="description" content="Sitio público de presentación de Manager Library: catálogo de libros, socios y préstamos de una biblioteca pequeña, construido con SDD." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio">
+        <img class="brand-logo" src="assets/favicon.svg" alt="" width="32" height="32" />
+        <span class="brand-name">Manager Library</span>
+      </a>
+      <nav class="site-nav" aria-label="Secciones">
+        <a href="#que-es">Qué es</a>
+        <a href="#spec">El spec</a>
+        <a href="#stack">Stack</a>
+        <a href="#como-correr">Cómo correr</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container">
+        <p class="eyebrow">Prueba técnica · Ficha ADSO 3413974</p>
+        <h1>Manager Library</h1>
+        <p class="lead">Sitio público estático de presentación del sistema de gestión de biblioteca
+          construido guiado por especificación (SDD) y traducido a React + Laravel + PostgreSQL sobre Docker.</p>
+        <p class="hero-actions">
+          <a class="btn btn-primary" href="#que-es">Conocer el proyecto</a>
+          <a class="btn btn-ghost" href="#como-correr">Cómo correrlo</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Manager Library · Prueba SDD ficha 3413974</p>
+      <p class="footer-note">Sitio estático: no consume la API. <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
