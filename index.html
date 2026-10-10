@@ -39,6 +39,90 @@
         </p>
       </div>
     </section>
+
+    <section class="section" id="que-es">
+      <div class="container">
+        <p class="section-tag">Qué es</p>
+        <h2>Un sistema para la biblioteca pequeña</h2>
+        <p class="section-lead">Manager Library permite a una biblioteca pequeña llevar su catálogo de
+          libros, sus socios y sus préstamos, y ver qué libros se prestan más. Nace de una especificación
+          (spec) y se construye guiándola paso a paso: primero la arquitectura, luego el código.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Catálogo</h3>
+            <p>Libros con título, autor, ISBN de 13 dígitos, categoría, ejemplares totales y disponibles,
+              y portada opcional (JPG/PNG, máx. 2 MB). Las cinco categorías son fijas.</p>
+          </article>
+          <article class="card">
+            <h3>Socios y préstamos</h3>
+            <p>Socios con nombre y documento único. Un préstamo es de un socio, trae de 1 a 3 líneas,
+              descuenta un ejemplar por línea y vence a los 14 días.</p>
+          </article>
+          <article class="card">
+            <h3>Control y reportes</h3>
+            <p>Devolución por línea, libros vencidos y reporte de los más prestados por rango de fechas,
+              con los valores congelados en el momento del préstamo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="spec">
+      <div class="container">
+        <p class="section-tag">Qué construye el spec</p>
+        <h2>Diez historias de usuario</h2>
+        <p class="section-lead">La especificación define los actores (administrador y bibliotecario),
+          las reglas de negocio, el modelo de datos y el contrato HTTP. Todo se implementa respetando el
+          negocio y traduciendo la tecnología a React + Laravel.</p>
+        <ol class="spec-list">
+          <li><strong>HU-01</strong> Iniciar sesión <span>token de 8 h; sin token 401, rol insuficiente 403</span></li>
+          <li><strong>HU-02</strong> Dar de alta bibliotecarios <span>solo admin; usuario en minúsculas y único</span></li>
+          <li><strong>HU-03</strong> Gestionar libros <span>ISBN único, total ≥ 1, baja lógica</span></li>
+          <li><strong>HU-04</strong> Buscar libros <span>texto, categoría, activos, paginado (máx. 50)</span></li>
+          <li><strong>HU-05</strong> Gestionar socios <span>documento único; no se eliminan</span></li>
+          <li><strong>HU-06</strong> Registrar préstamo <span>1–3 líneas, sin repetir libro, máx. 3 sin devolver</span></li>
+          <li><strong>HU-07</strong> Registrar devolución <span>una línea; nunca suma dos veces</span></li>
+          <li><strong>HU-08</strong> Ver y listar préstamos <span>estado calculado: open, overdue, closed</span></li>
+          <li><strong>HU-09</strong> Libros vencidos <span>ordenados por días de retraso</span></li>
+          <li><strong>HU-10</strong> Reporte de más prestados <span>por rango; rango invertido 422</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="container">
+        <p class="section-tag">Stack</p>
+        <h2>Tecnología del reto</h2>
+        <p class="section-lead">El spec original está escrito para Python y .NET; el reto se construye en
+          React y PHP/Laravel, empaquetado con Docker. La arquitectura es hexagonal: el dominio no depende
+          de nada y los puertos los define la aplicación.</p>
+        <ul class="stack-grid">
+          <li class="stack-item"><span class="stack-name">React 18 + Vite</span><span class="stack-role">Panel de gestión (frontend)</span></li>
+          <li class="stack-item"><span class="stack-name">PHP 8.3 + Laravel 11</span><span class="stack-role">API y reglas de negocio</span></li>
+          <li class="stack-item"><span class="stack-name">PostgreSQL 16</span><span class="stack-role">Base de datos (esquema library)</span></li>
+          <li class="stack-item"><span class="stack-name">JWT HS256</span><span class="stack-role">Autenticación y roles</span></li>
+          <li class="stack-item"><span class="stack-name">Docker + Compose</span><span class="stack-role">Un solo comando levanta todo</span></li>
+          <li class="stack-item"><span class="stack-name">Arquitectura hexagonal</span><span class="stack-role">Dominio, puertos y adaptadores</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="como-correr">
+      <div class="container">
+        <p class="section-tag">Cómo correr</p>
+        <h2>Un comando desde <code>infra</code></h2>
+        <p class="section-lead">Con Docker Desktop en marcha, todo el sistema se levanta con un único
+          comando. La API aplica las migraciones y crea el administrador inicial desde el entorno.</p>
+        <pre class="code-block"><code>cd infra
+docker compose up --build</code></pre>
+        <ul class="run-list">
+          <li><strong>page</strong> — este sitio público estático (no usa la API).</li>
+          <li><strong>app</strong> — panel de gestión en React.</li>
+          <li><strong>api</strong> — backend Laravel en <code>/api/v1</code>.</li>
+          <li><strong>db</strong> — PostgreSQL 16 con el esquema <code>library</code>.</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
